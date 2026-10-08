@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Nexletta smoke report — NOT STABLE</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: "Segoe UI", Inter, sans-serif; background: #f4f6f8; color: #1b2430; }
+    header { background: #1b2a4a; color: white; padding: 28px 40px 32px; }
+    header p { margin: 6px 0 0; color: #d5dbe6; }
+    .banner { display: inline-block; margin-top: 16px; background: #9b2335; color: white; font-weight: 700; letter-spacing: 0.08em; padding: 10px 16px; border-radius: 6px; }
+    main { padding: 28px 40px 64px; max-width: 1100px; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 8px 0 28px; }
+    .stat { background: white; border-radius: 10px; padding: 16px 18px; box-shadow: 0 1px 2px rgba(16,24,40,.06); }
+    .stat b { display: block; font-size: 28px; margin-top: 4px; }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e6ebf2; }
+    th { background: #eef2f7; font-size: 13px; }
+    .ok { color: #1f7a4d; font-weight: 700; }
+    .bad { color: #9b2335; font-weight: 700; }
+    h2 { margin: 32px 0 12px; }
+    .card { background: white; border-left: 6px solid #9b2335; border-radius: 10px; padding: 16px 18px; margin: 0 0 14px; }
+    .card.blocked { border-left-color: #9a6b12; }
+    .card h3 { margin: 0 0 8px; }
+    dl { display: grid; grid-template-columns: 160px 1fr; gap: 6px 12px; margin: 0; }
+    dt { color: #5c6b7a; }
+    dd { margin: 0; }
+    pre { white-space: pre-wrap; font-family: Consolas, monospace; font-size: 13px; background: #f7f8fa; padding: 10px; border-radius: 6px; }
+    .err { background: #fff6f6; }
+    ul.passed { padding-left: 18px; }
+    ul.passed li { margin: 0 0 10px; }
+    ul.passed span { color: #5c6b7a; }
+    .empty { background: white; padding: 16px; border-radius: 10px; }
+    a { color: #1b2a4a; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Nexletta post-deployment smoke report</h1>
+    <p>Generated 2026-10-08T10:37:14.953Z. Run this before bug tickets. Application defects are Failed. Missing credentials, selector drift, and missing records are Blocked.</p>
+    <div class="banner">Overall Status: NOT STABLE</div>
+  </header>
+  <main>
+    <section class="stats">
+      <div class="stat">Total tests<b>32</b></div>
+      <div class="stat">Passed<b>29</b></div>
+      <div class="stat">Failed<b>2</b></div>
+      <div class="stat">Blocked<b>1</b></div>
+    </section>
+    <h2>Role-wise results</h2>
+    <table>
+      <thead><tr><th>Role</th><th>Total</th><th>Passed</th><th>Failed</th><th>Blocked</th><th>Result</th></tr></thead>
+      <tbody><tr>
+          <td>Admin</td>
+          <td>6</td><td>6</td><td>0</td><td>0</td>
+          <td class="ok">PASS</td>
+        </tr><tr>
+          <td>Scheduler</td>
+          <td>4</td><td>4</td><td>0</td><td>0</td>
+          <td class="ok">PASS</td>
+        </tr><tr>
+          <td>Biller</td>
+          <td>4</td><td>4</td><td>0</td><td>0</td>
+          <td class="ok">PASS</td>
+        </tr><tr>
+          <td>Reviewer</td>
+          <td>3</td><td>2</td><td>0</td><td>1</td>
+          <td class="bad">FAIL</td>
+        </tr><tr>
+          <td>Organization</td>
+          <td>4</td><td>2</td><td>2</td><td>0</td>
+          <td class="bad">FAIL</td>
+        </tr><tr>
+          <td>Veteran</td>
+          <td>5</td><td>5</td><td>0</td><td>0</td>
+          <td class="ok">PASS</td>
+        </tr><tr>
+          <td>Representative</td>
+          <td>3</td><td>3</td><td>0</td><td>0</td>
+          <td class="ok">PASS</td>
+        </tr><tr>
+          <td>Provider</td>
+          <td>3</td><td>3</td><td>0</td><td>0</td>
+          <td class="ok">PASS</td>
+        </tr></tbody>
+    </table>
+    <h2>Failed and blocked tests</h2>
+    <article class="card failed">
+              <h3>FAILED: Organization — Sign-in lands on that organization's own bills</h3>
+              <p class="class">Classification: <strong>application</strong></p>
+              <dl>
+                <dt>Path</dt><dd>Organization / Sign-in lands on that organization's own bills</dd>
+                <dt>Expected</dt><dd>Organization sign-in lands on that organization's own bills, not the practice-wide dashboard.</dd>
+                <dt>Actual</dt><dd>SmokeError: [application] Organization sign-in landed on https://staff.nexletta.com/staff/dashboard with heading &quot;Dashboard&quot;, not that organization's bills.</dd>
+                <dt>Reproduction steps</dt><dd><pre>1. Open the staff portal.
+2. Sign in with the Organization account.
+3. Read the landing page.</pre></dd>
+                <dt>Screenshot</dt><dd><a href="artifacts/organization-Organization--2ba17-at-organization-s-own-bills-chromium/test-failed-1.png">artifacts/organization-Organization--2ba17-at-organization-s-own-bills-chromium/test-failed-1.png</a></dd>
+                <dt>Trace</dt><dd><a href="artifacts/organization-Organization--2ba17-at-organization-s-own-bills-chromium/trace.zip">artifacts/organization-Organization--2ba17-at-organization-s-own-bills-chromium/trace.zip</a></dd>
+              </dl>
+              <pre class="err">SmokeError: [application] Organization sign-in landed on https://staff.nexletta.com/staff/dashboard with heading &quot;Dashboard&quot;, not that organization's bills.</pre>
+            </article><article class="card failed">
+              <h3>FAILED: Organization — Veteran and representative do not see the organization invoice</h3>
+              <p class="class">Classification: <strong>application</strong></p>
+              <dl>
+                <dt>Path</dt><dd>Organization / Veteran and representative do not see the organization invoice</dd>
+                <dt>Expected</dt><dd>An invoice visible to the organization is not visible to the veteran account or the representative account.</dd>
+                <dt>Actual</dt><dd>SmokeError: [application] Representative can see organization invoice INV-2026-0520.</dd>
+                <dt>Reproduction steps</dt><dd><pre>1. Sign in as Organization and read the first invoice id.
+2. Sign in as Veteran and open Billing. Confirm that invoice id is absent.
+3. Sign in as Representative and open Billing. Confirm that invoice id is absent.</pre></dd>
+                <dt>Screenshot</dt><dd><a href="artifacts/organization-Organization--8cc42-ee-the-organization-invoice-chromium/test-failed-1.png">artifacts/organization-Organization--8cc42-ee-the-organization-invoice-chromium/test-failed-1.png</a></dd>
+                <dt>Trace</dt><dd><a href="artifacts/organization-Organization--8cc42-ee-the-organization-invoice-chromium/trace.zip">artifacts/organization-Organization--8cc42-ee-the-organization-invoice-chromium/trace.zip</a></dd>
+              </dl>
+              <pre class="err">SmokeError: [application] Representative can see organization invoice INV-2026-0520.</pre>
+            </article><article class="card blocked">
+              <h3>BLOCKED: Reviewer — QA queue opens, one case in review opens, and Approve and Return are available</h3>
+              <p class="class">Classification: <strong>test-data</strong></p>
+              <dl>
+                <dt>Path</dt><dd>Reviewer / QA queue opens, one case in review opens, and Approve and Return are available</dd>
+                <dt>Expected</dt><dd>The QA queue opens, one case in review opens, and Approve and Return are available. Neither action is clicked.</dd>
+                <dt>Actual</dt><dd>SmokeError: [test-data] QA queue opened, but Pending QA Review and In Review have no case. Approve and Return cannot be checked without a case in review. This is blocked test data.</dd>
+                <dt>Reproduction steps</dt><dd><pre>1. Sign in as Reviewer.
+2. Open QA Reviews.
+3. Filter to Pending QA Review, then In Review if needed.
+4. Open one case in review.
+5. Confirm Approve and Return are available and do not click them.</pre></dd>
+                <dt>Screenshot</dt><dd><a href="artifacts/reviewer-Reviewer-QA-queue-970cb-ve-and-Return-are-available-chromium/test-failed-1.png">artifacts/reviewer-Reviewer-QA-queue-970cb-ve-and-Return-are-available-chromium/test-failed-1.png</a></dd>
+                <dt>Trace</dt><dd><a href="artifacts/reviewer-Reviewer-QA-queue-970cb-ve-and-Return-are-available-chromium/trace.zip">artifacts/reviewer-Reviewer-QA-queue-970cb-ve-and-Return-are-available-chromium/trace.zip</a></dd>
+              </dl>
+              <pre class="err">SmokeError: [test-data] QA queue opened, but Pending QA Review and In Review have no case. Approve and Return cannot be checked without a case in review. This is blocked test data.</pre>
+            </article>
+    <h2>Passed tests</h2>
+    <ul class="passed"><li><strong>Admin</strong> — Dashboard opens with case counts<br><span>Dashboard at https://staff.nexletta.com/staff/dashboard shows &quot;Pending Records 67&quot; and &quot;In progress 19&quot;.</span></li><li><strong>Admin</strong> — Cases list opens and one case opens<br><span>Opened case NXL-2026-0248 at https://staff.nexletta.com/staff/cases/NXL-2026-0248 and did not save.</span></li><li><strong>Admin</strong> — Settings opens<br><span>Settings surface opened at https://staff.nexletta.com/staff/admin with heading &quot;Admin Dashboard&quot;.</span></li><li><strong>Admin</strong> — Billing opens<br><span>Billing opened at https://staff.nexletta.com/staff/billing.</span></li><li><strong>Admin</strong> — QA opens<br><span>QA Reviews opened at https://staff.nexletta.com/staff/qa.</span></li><li><strong>Admin</strong> — Appointments opens<br><span>Appointments opened at https://staff.nexletta.com/staff/appointments.</span></li><li><strong>Biller</strong> — Billing list opens and one invoice shows amount and status<br><span>Opened INV-2026-0520: amount $650, status Paid.</span></li><li><strong>Biller</strong> — Mark as Paid is available and is not used<br><span>Mark as Paid is enabled on 10 invoice(s). It was not clicked.</span></li><li><strong>Biller</strong> — Appointments do not open<br><span>Appointments stayed blocked. Landed at https://staff.nexletta.com/staff/dashboard.</span></li><li><strong>Biller</strong> — QA does not open<br><span>QA stayed blocked. Landed at https://staff.nexletta.com/staff/dashboard.</span></li><li><strong>Organization</strong> — One organization invoice opens<br><span>Opened INV-2026-0520: $650, Paid. Referring-org filter options: My Org.</span></li><li><strong>Organization</strong> — Another organization's invoice does not open<br><span>INV-2026-0517 is not in the organization billing list at https://staff.nexletta.com/staff/billing.</span></li><li><strong>Provider</strong> — Dashboard opens with this provider's cases only<br><span>Dashboard for &quot;Muskan prov&quot; at https://providers.nexletta.com/provider/dashboard does not include NXL-2026-0245.</span></li><li><strong>Provider</strong> — One assigned case opens and the evaluation form opens<br><span>Opened assigned case &quot;NXL-2026-0248 muskan aaa IME Single Ready 1 Wrist — 11/05/2026 Oct 8, 2026 Open New tab&quot; and the evaluation surface at https://providers.nexletta.com/provider/evaluations without submitting.</span></li><li><strong>Provider</strong> — Another provider's case, Billing, and Settings do not open<br><span>Foreign case URL https://providers.nexletta.com/provider/cases/NXL-2026-0245 did not open the case. Billing and Settings headings were not shown.</span></li><li><strong>Representative</strong> — Managed Veterans list opens and one linked veteran shows case status<br><span>Opened linked veteran &quot;VET-10009 muskan aaa IME Single Report ready Unpaid invoice · $19,60026 outstanding Verified 10/08/2026&quot;. Case NXL-2026-0248 shows &quot;Your report is ready for collection&quot; at https://app.nexletta.com/veteran/case.</span></li><li><strong>Representative</strong> — Billing follows who is paying for the linked veteran<br><span>Organization &quot;My Org&quot; is paying. Representative billing does not show that organization price.</span></li><li><strong>Representative</strong> — A veteran who is not linked does not open<br><span>Nex Vet is not in Managed Veterans at https://app.nexletta.com/veteran/managed.</span></li><li><strong>Reviewer</strong> — Billing does not open<br><span>Billing stayed blocked. Landed at https://staff.nexletta.com/staff/dashboard.</span></li><li><strong>Reviewer</strong> — Appointments do not open<br><span>Appointments stayed blocked. Landed at https://staff.nexletta.com/staff/dashboard.</span></li><li><strong>Scheduler</strong> — Cases list opens<br><span>Cases list opened at https://staff.nexletta.com/staff/cases.</span></li><li><strong>Scheduler</strong> — Appointments calendar opens and one appointment opens<br><span>Opened appointment &quot;muskannn abc 8:00 AM CDT – 9:00 AM CDT Telehealth Scheduled&quot; from https://staff.nexletta.com/staff/appointments and did not save.</span></li><li><strong>Scheduler</strong> — Billing does not open<br><span>Billing stayed blocked. Landed at https://staff.nexletta.com/staff/dashboard.</span></li><li><strong>Scheduler</strong> — QA does not open<br><span>QA stayed blocked. Landed at https://staff.nexletta.com/staff/dashboard.</span></li><li><strong>Veteran</strong> — Sign-in shows only that veteran's case<br><span>Dashboard at https://app.nexletta.com/veteran/dashboard shows own case NXL-2026-0248 and not NXL-2026-0245.</span></li><li><strong>Veteran</strong> — Case status opens<br><span>Case NXL-2026-0248 at https://app.nexletta.com/veteran/case shows &quot;Your report is ready for collection&quot;.</span></li><li><strong>Veteran</strong> — Records page opens<br><span>Records opened at https://app.nexletta.com/veteran/records. No file was uploaded.</span></li><li><strong>Veteran</strong> — Billing follows who is paying<br><span>Organization &quot;My Org&quot; is paying. Billing does not show that organization price.</span></li><li><strong>Veteran</strong> — Another veteran's case does not open<br><span>NXL-2026-0245 is not in the case filter and did not open. URL after direct navigation: https://app.nexletta.com/veteran/dashboard.</span></li></ul>
+  </main>
+</body>
+</html>

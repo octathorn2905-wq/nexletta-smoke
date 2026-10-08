@@ -1,0 +1,11 @@
+{
+  "name": "nexletta-smoke",
+  "private": true,
+  "description": "Post-deployment Playwright smoke suite for Nexletta. Does not modify the application.",
+  "scripts": {
+    "smoke": "playwright test --headed"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.1"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "status": "NOT STABLE",
+  "generatedAt": "2026-10-08T10:37:14.953Z",
+  "total": 32,
+  "passed": 29,
+  "failed": 2,
+  "blocked": 1,
+  "playwrightStatus": "failed",
+  "roles": [
+    {
+      "role": "Admin",
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "blocked": 0,
+      "status": "PASS"
+    },
+    {
+      "role": "Scheduler",
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "blocked": 0,
+      "status": "PASS"
+    },
+    {
+      "role": "Biller",
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "blocked": 0,
+      "status": "PASS"
+    },
+    {
+      "role": "Reviewer",
+      "total": 3,
+      "passed": 2,
+      "failed": 0,
+      "blocked": 1,
+      "status": "FAIL"
+    },
+    {
+      "role": "Organization",
+      "total": 4,
+      "passed": 2,
+      "failed": 2,
+      "blocked": 0,
+      "status": "FAIL"
+    },
+    {
+      "role": "Veteran",
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "blocked": 0,
+      "status": "PASS"
+    },
+    {
+      "role": "Representative",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "blocked": 0,
+      "status": "PASS"
+    },
+    {
+      "role": "Provider",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "blocked": 0,
+      "status": "PASS"
+    }
+  ]
+}
